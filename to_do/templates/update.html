@@ -1,0 +1,77 @@
+{% extends 'base1.html' %}
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container" style = "display : flex; justify-content : center; padding-top : 20px;">
+    <div class="col-md-4 col-md-offset-4">
+        <form method="POST" action="{{url_for('main.update_assignment' , assignment_id = assignment.id)}}">
+        <h2>Update Assignment</h2>
+
+
+        <div class="form-group">
+            <label for="assignment">Assignment</label>
+            <input
+            type="text"
+            class="form-control"
+            id="assignment"
+            name="assignment"
+            placeholder={{assignment.assignment}}
+            value = {{assignment.assignment}}
+            />
+        </div>
+        <div class="form-group">
+            <label for="date_posted">Date Posted</label>
+            <input
+            type="date"
+            class="form-control"
+            id="date_posted"
+            name="date_posted"
+            placeholder={{assignment.date_posted}}
+            value = {{assignment.date_posted}}
+            />
+        </div>
+        <div class="form-group">
+            <label for="due_date">Date Due</label>
+            <input
+            type="date"
+            class="form-control"
+            id="due_date"
+            name="due_date"
+            placeholder={{assignment.due_date}}
+            value = {{assignment.due_date}}
+            />
+        </div>
+        <div class="form-group">
+            <label for="comment">Comment</label>
+            <input
+            type="text"
+            class="form-control"
+            id="comment"
+            name="comment"
+            placeholder={{assignment.comment}}
+            value = {{assignment.comment}}
+            />
+        </div>
+       
+        <div class="custom-control custom-checkbox">
+            {% if assignment.completion == false %}
+                <input type="checkbox" class="custom-control-input" id="completion" name = "completion">
+            {% else %}
+                <input type="checkbox" class="custom-control-input" id="completion" name = "completion" checked>
+            {% endif %}
+            <label class="custom-control-label" for="completion">Completed?</label>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

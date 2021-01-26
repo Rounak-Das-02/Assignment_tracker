@@ -1,0 +1,48 @@
+{% extends 'base1.html' %}
+{% block head %}
+{{super()}}
+<!-- Add extra head tags here -->
+{% endblock %}
+
+
+{% block content %}
+
+<h1>WELCOME {{name}}</h1>
+
+<p>   
+    Following are your Statistics : 
+</p>
+
+<ul style = "list-style-type : none">
+    {% for key , value in values.items() %}
+    <li>{{key}} : {{value}}</li><br>
+    {% endfor %} 
+</ul>
+
+<br>
+<br><br><br>
+
+
+<div class="coming_soon" style = "font-size: 14px; color : wheat; ">
+
+    <span class="big" style = "font-size: 20px;">[Note : </span>
+    You can add your WEEKLY Tutorial Subjects here so as to get rid of the tedious job of adding same assignments.<br>
+    Visit <a href = "{{url_for('main.index')}}" style = "font-weight: bolder; text-decoration : underline; color : white;">About</a> Page to know more ...
+    <br><br><br>
+    
+    This Feature will come in soon if I get adequate response ... :) Thanks
+    <span class="big" style = "font-size: 20px;">]</span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

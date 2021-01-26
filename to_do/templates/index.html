@@ -1,0 +1,21 @@
+{% extends 'base1.html' %}
+{% block head %}
+{{super()}}
+<!-- Add extra head tags here -->
+{% endblock %} 
+
+
+{% block content %} 
+
+
+
+
+    <h1>HELLO</h1> 
+
+
+    <p> Welcome to the MU assignment tracker. <br><br>MU assignment tracker helps you to keep a track of all the assignments you have submitted or the ones that are due. <br><br> 
+        Explore <a href = "{{url_for('main.index')}}" style = "font-weight: bolder; text-decoration : underline; color : white;">About</a> Page to know more ...</p>
+    <!-- CRUD and Auth functionality-->
+
+
+{% endblock %}

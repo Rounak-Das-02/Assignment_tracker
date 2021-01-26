@@ -1,0 +1,99 @@
+{% extends "base1.html" %} {% block head %} 
+{{ super() }}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+{% endblock %} 
+{% block content %}
+
+<h1>
+  Welcome, {{ current_user.name }}!
+</h1>
+
+<br>
+  {% with messages = get_flashed_messages() %} 
+  {% if messages %}
+      <div class="flashes" style = "color : red ; font-family : Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ; ">
+          {{ messages[0] }}
+      </div>
+  {% endif %} {% endwith %}
+
+<br>
+
+
+<div>
+  <table class="table table-hover" style="background: rgb(187, 187, 187); opacity : 0.90;width:100vw ;color : black;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Assignment</th>
+        <th scope="col">Date Posted</th>
+        <th scope="col">Date Due</th>
+        <th scope="col">Comments</th>
+        <th scope="col">Completion Status</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for assignment in assignments.items %}
+      <tr>
+        <td>{{ assignment.assignment }}</td>
+        <td>{{ assignment.date_posted.strftime('%d/%m/%Y') }}</td>
+        <td>{{ assignment.due_date.strftime('%d/%m/%Y') }}</td>
+        <td>{{ assignment.comment }}</td>
+        {% if  assignment.completion == false %}
+          <td><div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+            <label class="form-check-label" for="flexCheckDefault">
+              Not Submitted
+            </label>
+          </div></td>
+        {% else %}
+        <td><div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled>
+          <label class="form-check-label" for="flexCheckChecked">
+            Submitted
+          </label>
+        </div></td>
+        {% endif %}
+
+        <td>
+          <a
+            href="{{ url_for('main.update_assignment' ,  assignment_id = assignment.id)}}"
+            class="btn btn-outline-primary"
+            role="button"
+          >
+            Edit
+          </a>
+        </td>
+        <td>
+          <a
+          href="{{ url_for('main.delete' ,  assignment_id = assignment.id)}}"
+            class="btn btn-outline-danger"
+            role="button"
+          >
+            Delete
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% for page in assignments.iter_pages(left_edge = 1 , right_edge = 1 , left_current = 3 , right_current = 5) %} 
+    {% if page %}
+      {% if assignments.page == page %}
+        <a class = "btn btn-info ab-4" href = "{{url_for('main.user_assignment' , page = page)}}">{{page}}</a>
+      {% else %}
+      <a class = "btn btn-outline-primary ab-4" href = "{{url_for('main.user_assignment' , page = page)}}">{{page}}</a>
+      {% endif %}
+    {% else %}
+    ...
+    {% endif %}
+  {% endfor %}
+
+
+</div>
+
+
+{% endblock %}

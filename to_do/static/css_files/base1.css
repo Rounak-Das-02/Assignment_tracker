@@ -1,0 +1,159 @@
+:root{
+    --angle : 90deg ; 
+}
+
+
+.navbar_container
+{
+    display : flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(27, 29, 29);
+    margin : 0px;
+    padding : 12px;
+    text-align: center;
+    align-content: center;
+    
+}
+
+.navbar_container > .logo img
+{
+    display : none;
+    height : 12px;
+    width : auto;
+    /* border-radius: 20px; */
+}
+
+.navbar_container > .nav_item a
+{
+    display : inline-block;
+    font-size: 15px;
+    padding:2px;
+    padding-right: 12px;
+    padding-left : 12px;
+    margin : 5px;
+    text-decoration: none;
+    color : white;
+    border-radius :50px;
+}
+
+.navbar_container > .nav_item a:hover
+{
+    background : rgb(10, 71, 65);
+    transition: background 0.2s ease-in-out;
+}
+
+.navbar_container > .nav_item a.active
+{
+    border-radius: 50px;
+}
+
+.navbar_container > .nav_item > .hamburger
+{
+    display : none;
+}
+
+html , body
+{
+    background : #ffffff;
+    font-family : 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    margin : 0px; 
+    text-decoration : none;
+    /* background : url("https://i.pinimg.com/564x/af/8d/63/af8d63a477078732b79ff9d9fc60873f.jpg");  */
+    /* background : url("https://wallpaperaccess.com/full/124383.jpg"); */
+    background: url("https://makcreates.com/wp-content/uploads/2018/03/black-background-mak-creates-web-design-services-1500-2500.jpg") no-repeat;
+}
+
+
+
+@media only screen and (max-width : 952px)
+{
+    .navbar_container
+    {
+        flex-direction: column;
+    }
+    .navbar_container > .logo img
+    {
+        height : 24px;
+        width : auto;
+    }
+
+    .navbar_container > .nav_item
+    {
+        background: none;
+        display:inline-block;
+    }
+
+    .navbar_container > .nav_item a
+    {
+        /* outline : 2px solid white; */
+        display: none;
+        font-size : 12px;
+        color: white;
+        transition: all 2s ease-in-out;
+
+        
+    }
+    .navbar_container > .nav_item a:hover
+    {
+        font-size : 12px;
+        transition: none;
+    }
+
+    .navbar_container > .nav_item a.active
+    {
+        color : #0091ff;
+    }
+    .navbar_container > .nav_item > .auth_container
+    {
+        border-top: 2px solid burlywood;
+    }
+
+    .navbar_container > .nav_item > .hamburger
+    {
+        display : inline-block;
+        right: 0;
+        animation : ani 3s infinite;
+    }
+
+    @keyframes ani
+    {
+        0%  {transform: translate(0px , 0px) rotate(var(--angle));}
+        15% {transform: translate(0 , 2px) rotate(var(--angle));}
+        25% {transform: translate(0 , 1px) rotate(var(--angle))}
+        35% {transform: translate(0 , 2px) rotate(var(--angle))}
+        60% {transform: translate(0 , 0px) rotate(var(--angle))}
+        100% {transform: translate(0 , 0px) rotate(var(--angle))}
+    }
+}
+
+@media only screen and (min-width : 952px)
+{
+    
+    .navbar_container > .nav_item a.active
+    {
+        background : rgb(85, 59, 19);
+    }
+
+    .navbar_container > .nav_item > .auth_container > #auth_highlight
+    {
+        border : 1px solid chocolate;
+        background : linear-gradient(to left , rgb(85, 57, 5) , rgb(255, 166, 0));
+        border-radius: 50px;
+    }
+
+    .navbar_container > .nav_item > .auth_container > #auth_nothighlight
+    {
+        border : 0.1px solid orange;
+        border-radius: 50px;
+    }
+
+    .navbar_container > .nav_item > .auth_container > #auth_nothighlight:hover
+    {
+        background : rgb(129, 6, 98);
+    }
+
+}
